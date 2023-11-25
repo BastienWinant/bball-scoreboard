@@ -17,10 +17,8 @@ const teams = [homeTeam, awayTeam];
 const scoreCards = document.getElementsByClassName("pts-card");
 
 function addPoints(teamIndex, points) {
-	let scoreCard = scoreCards[teamIndex];
-	const currentPoints = parseInt(scoreCard.textContent);
-	
-	scoreCard.textContent = currentPoints + points;
+	teams[teamIndex].points += points;
+	updateScoreCards();
 }
 
 function updateScoreCards() {
