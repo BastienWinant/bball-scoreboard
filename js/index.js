@@ -14,9 +14,16 @@ const awayTeam = {
 
 const teams = [homeTeam, awayTeam];
 
-function updateScoreCards() {
-	let scoreCards = document.getElementsByClassName("pts-card");
+const scoreCards = document.getElementsByClassName("pts-card");
 
+function addPoints(teamIndex, points) {
+	let scoreCard = scoreCards[teamIndex];
+	const currentPoints = parseInt(scoreCard.textContent);
+	
+	scoreCard.textContent = currentPoints + points;
+}
+
+function updateScoreCards() {
 	for (let i = 0; i < 2; i++) {
 		scoreCards[i].textContent = teams[i].points;
 	}
