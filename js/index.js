@@ -1,76 +1,90 @@
-const lightGrey = "#D6D6D6";
-const darkGrey = "#333533";
-const yellow = "#FFEE32";
-const black = "#202020";
-
-const homeTeam = {
-	designation: "home",
-	points: 0,
-	fouls: 5,
-	timeouts: 6
+let homeTeam = {
+  designation: "home",
+  points: 0,
+  fouls: 5,
+  timeouts: 6
 };
 
-const awayTeam = {
-	designation: "away",
-	points: 0,
-	fouls: 5,
-	timeouts: 6
+let awayTeam = {
+  designation: "home",
+  points: 0,
+  fouls: 5,
+  timeouts: 6
 };
 
-const teams = [homeTeam, awayTeam];
+const teams = [homeTeam, awayTeam]
 
 const scoreCards = document.getElementsByClassName("pts-card");
+const timeOuts = document.getElementsByClassName("timeout");
+
+function updateScores() {
+  for (let i = 0; i < 2; i++) {
+    scoreCards[i].textContent = teams[i].points
+  }
+}
+
+function updateItems(eventType) {
+  for (let i = 0; i < 2; i++) {
+    const teamContainer = document.getElementsByClassName("team-section")[i];
+    const teamItems = teamContainer.getElementsByClassName(eventType);
+
+    const n = eventType == "foul" ? 5 : 6;
+
+    for (let j = 0; j < n; j++) {
+      if (j < teams[i][eventType + "s"]) {
+        teamItems[j].style.background = "red";
+      } else {
+        teamItems[j].style.background = "black";
+      }
+    }
+  }
+}
+
+function resetGame() {
+  for (let i = 0; i < 2; i ++) {
+    teams[i].points = 0;
+    teams[i].fouls = 5;
+    teams[i].timeouts = 6;
+  }
+
+  updateScores();
+  updateItems("foul");
+  updateItems("timeout");
+
+  // reenable all gameplay buttons
+  const gameplayButtons = document.getElementsByClassName("gameplay-btn");
+  for (let i = 0, n = gameplayButtons.length; i< n; i++) {
+    gameplayButtons[i].disabled = false;
+  }
+}
 
 function addPoints(teamIndex, points) {
-	// add the score in the appropriate team object
-	teams[teamIndex].points += points;
-
-	// update the html cards content
-	updateScoreCards();
+  teams[teamIndex].points += points;
+  updateScores();
 }
 
-function resetScore() {
-	homeTeam.points = 0;
-	awayTeam.points = 0;
+function removeFoul(teamIndex) {
+  teams[teamIndex].fouls--;
+  updateItems("foul");
 
-	homeTeam.fouls = 5;
-	awayTeam.fouls = 5;
-
-	homeTeam.timeouts = 6;
-	awayTeam.timeouts = 6;
-
-	updateScoreCards();
+  // disable button if the team is out of fouls
+  if (teams[teamIndex].fouls == 0) {
+    document.getElementsByClassName("foul-btn")[teamIndex].disabled = true;
+  }
 }
 
-function updateScoreCards() {
-	// pull the data in the team objects to update html
-	for (let i = 0; i < 2; i++) {
-		scoreCards[i].textContent = teams[i].points;
-	}
+function removeTimeOut(teamIndex) {
+  teams[teamIndex].timeouts--;
+  updateItems("timeout");
 
-	const homePoints = homeTeam.points;
-	const awayPoints = awayTeam.points;
-
-	if (homePoints > awayPoints) {
-		scoreCards[0].style.color = yellow;
-		scoreCards[0].style.border = `4px solid ${yellow}`;
-
-		scoreCards[1].style.color = lightGrey;
-		scoreCards[1].style.border = `4px solid ${lightGrey}`;
-	} else if (homePoints < awayPoints) {
-		scoreCards[0].style.color = lightGrey;
-		scoreCards[0].style.border = `4px solid ${lightGrey}`;
-
-		scoreCards[1].style.color = yellow;
-		scoreCards[1].style.border = `4px solid ${yellow}`;
-	} else {
-		scoreCards[0].style.color = lightGrey;
-		scoreCards[0].style.border = `4px solid ${lightGrey}`;
-		scoreCards[1].style.color = lightGrey;
-		scoreCards[1].style.border = `4px solid ${lightGrey}`;
-	}
-}; 
+  // disable button if the team is out of timeouts
+  if (teams[teamIndex].timeouts == 0) {
+    document.getElementsByClassName("timeout-btn")[teamIndex].disabled = true;
+  }
+}
 
 document.addEventListener("DOMContentLoaded", () => {
-	updateScoreCards();
-});
+  updateScores();
+  updateItems("foul");
+  updateItems("timeout");
+})
