@@ -2,14 +2,14 @@ let homeTeam = {
   designation: "home",
   points: 0,
   fouls: 5,
-  timeouts: 6
+  timeouts: 7
 };
 
 let awayTeam = {
   designation: "home",
   points: 0,
   fouls: 5,
-  timeouts: 6
+  timeouts: 7
 };
 
 const teams = [homeTeam, awayTeam]
@@ -28,13 +28,13 @@ function updateItems(eventType) {
     const teamContainer = document.getElementsByClassName("team-section")[i];
     const teamItems = teamContainer.getElementsByClassName(eventType);
 
-    const n = eventType == "foul" ? 5 : 6;
+    const n = eventType == "foul" ? 5 : 7;
 
     for (let j = 0; j < n; j++) {
       if (j < teams[i][eventType + "s"]) {
-        teamItems[j].style.background = "red";
+        teamItems[j].style.background = "#333333";
       } else {
-        teamItems[j].style.background = "black";
+        teamItems[j].style.background = "none";
       }
     }
   }
@@ -44,7 +44,7 @@ function resetGame() {
   for (let i = 0; i < 2; i ++) {
     teams[i].points = 0;
     teams[i].fouls = 5;
-    teams[i].timeouts = 6;
+    teams[i].timeouts = 7;
   }
 
   updateScores();
