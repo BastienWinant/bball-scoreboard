@@ -3,6 +3,14 @@
 	box-sizing: border-box;
 }
 
+:root {
+	--light-grey: #D6D6D6;
+	--dark-grey: #333533;
+	--light-yellow: #FFEE32;
+	--dark-yellow: #FFD100;
+	--black: #202020;
+}
+
 /* utility classes */
 .no-margin {
 	margin: 0 !important;
@@ -89,6 +97,32 @@ main {
 	width: 140px;
 	font-size: 50px;
 	line-height: 50px;
+}
+
+.gameplay-btns {
+	width: 140px;
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+
+.gameplay-btn {
+	border: none;
+	padding: 10px 0;
+}
+
+.foul-btn {
+	background-color: lightcoral;
+}
+
+.timeout-btn {
+	background-color: lightgoldenrodyellow;
+}
+
+.reset-btn {
+	background-color: lightgreen;
+	padding: 10px 20px;
+	border: none;
 }
 
 @media(min-width: 576px) {
