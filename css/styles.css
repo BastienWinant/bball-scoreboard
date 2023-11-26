@@ -3,15 +3,6 @@
 	box-sizing: border-box;
 }
 
-:root {
-	--light-grey: #D6D6D6;
-	--dark-grey: #333533;
-	--light-yellow: #FFEE32;
-	--dark-yellow: #FFD100;
-	--black: #202020;
-}
-
-/* utility classes */
 .no-margin {
 	margin: 0 !important;
 }
@@ -24,7 +15,6 @@
 	box-sizing: border-box;
 }
 
-/* generic classes */
 .centered-content {
 	display: flex;
 	align-items: center;
@@ -32,55 +22,37 @@
 }
 
 .btn {
-	text-transform: uppercase;
-	font-size: 16px;
-	line-height: 16px;
-	border-radius: 4px;
 	cursor: pointer;
 }
 
 .container {
+	/* sizing and positioning */
 	width: 90vw;
 	max-width: 576px;
-
 	margin: 6vw auto;
-	padding: 20px 50px;
 
-	border-radius: 8px;
-
+	/* content alignment */
 	display: flex;
 	flex-direction: column;
-	gap: 30px;
 }
 
 main {
+	/* content alignment */
 	display: flex;
 	flex-direction: column;
-	align-items: stretch;
-	justify-content: space-between;
-	gap: 30px;
 }
 
-.team-section {
+.pts-container {
+	/* content alignment */
 	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-
-.team-section-title {
-	text-transform: uppercase;
-}
-
-.pts-display {
-	display: flex;
-	position: relative;
-	left: -30px;
 }
 
 .pts-btns {
-	height: 140px;
+	/* sizing */
 	width: 60px;
+	height: 140px;
 
+	/* content alignment */
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -88,52 +60,44 @@ main {
 }
 
 .pts-btn {
+	/* sizing */
 	width: 50px;
 	height: 40px;
 }
 
 .pts-card {
-	height: 140px;
+	/* sizing */
 	width: 140px;
-	font-size: 50px;
-	line-height: 50px;
+	height: 140px;
 }
 
-.gameplay-btns {
-	width: 140px;
+.gameplay-section {
 	display: flex;
 	flex-direction: column;
-	gap: 5px;
+	align-items: stretch;
 }
 
-.gameplay-btn {
-	border: none;
-	padding: 10px 0;
+.gameplay-items {
+	/* content alignment */
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.gameplay-item {
+	height: 8px;
+	width: 8px;
+	border-radius: 50%;
+	background: black;
 }
 
-.foul-btn {
-	background-color: lightcoral;
-}
-
-.timeout-btn {
-	background-color: lightgoldenrodyellow;
-}
-
-.reset-btn {
-	background-color: lightgreen;
-	padding: 10px 20px;
-	border: none;
-}
-
-@media(min-width: 576px) {
+@media (min-width: 576px) {
 	main {
+		/* content alignment */
 		flex-direction: row;
-		gap: 0;
 	}
 
-	.pts-display-right {
+	.pts-container-right {
 		flex-direction: row-reverse;
-		left: 30px;
 	}
 
 	.pts-btns-right {

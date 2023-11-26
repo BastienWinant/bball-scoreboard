@@ -1,3 +1,8 @@
+const lightGrey = "#D6D6D6";
+const darkGrey = "#333533";
+const yellow = "#FFEE32";
+const black = "#202020";
+
 const homeTeam = {
 	designation: "home",
 	points: 0,
@@ -47,14 +52,22 @@ function updateScoreCards() {
 	const awayPoints = awayTeam.points;
 
 	if (homePoints > awayPoints) {
-		scoreCards[0].style.color = "red";
-		scoreCards[1].style.color = "black";
+		scoreCards[0].style.color = yellow;
+		scoreCards[0].style.border = `4px solid ${yellow}`;
+
+		scoreCards[1].style.color = lightGrey;
+		scoreCards[1].style.border = `4px solid ${lightGrey}`;
 	} else if (homePoints < awayPoints) {
-		scoreCards[0].style.color = "black";
-		scoreCards[1].style.color = "red";
+		scoreCards[0].style.color = lightGrey;
+		scoreCards[0].style.border = `4px solid ${lightGrey}`;
+
+		scoreCards[1].style.color = yellow;
+		scoreCards[1].style.border = `4px solid ${yellow}`;
 	} else {
-		scoreCards[0].style.color = "black";
-		scoreCards[1].style.color = "black";
+		scoreCards[0].style.color = lightGrey;
+		scoreCards[0].style.border = `4px solid ${lightGrey}`;
+		scoreCards[1].style.color = lightGrey;
+		scoreCards[1].style.border = `4px solid ${lightGrey}`;
 	}
 }; 
 
