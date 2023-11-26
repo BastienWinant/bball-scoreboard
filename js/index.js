@@ -17,11 +17,14 @@ const teams = [homeTeam, awayTeam]
 const scoreCards = document.getElementsByClassName("pts-card");
 const timeOuts = document.getElementsByClassName("timeout");
 
+// render the latest scores in the HTML
 function updateScores() {
+  // update the points for each team based on the data in the objects
   for (let i = 0; i < 2; i++) {
     scoreCards[i].textContent = teams[i].points
   }
 
+  // change the styling according to which team is in the lead
   const homePoints = parseInt(scoreCards[0].textContent);
   const awayPoints = parseInt(scoreCards[1].textContent);
 
@@ -46,6 +49,7 @@ function updateScores() {
   }
 }
 
+// render the number of events (fouls/time-outs) remaining for each team
 function updateItems(eventType) {
   for (let i = 0; i < 2; i++) {
     const teamContainer = document.getElementsByClassName("team-section")[i];
@@ -63,6 +67,7 @@ function updateItems(eventType) {
   }
 }
 
+// reset the team object values to their default initial values
 function resetGame() {
   for (let i = 0; i < 2; i ++) {
     teams[i].points = 0;
@@ -100,7 +105,7 @@ function removeTimeOut(teamIndex) {
   teams[teamIndex].timeouts--;
   updateItems("timeout");
 
-  // disable button if the team is out of timeouts
+  // disable button if the team is out of time-outs
   if (teams[teamIndex].timeouts == 0) {
     document.getElementsByClassName("timeout-btn")[teamIndex].disabled = true;
   }
