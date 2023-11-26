@@ -21,6 +21,29 @@ function updateScores() {
   for (let i = 0; i < 2; i++) {
     scoreCards[i].textContent = teams[i].points
   }
+
+  const homePoints = parseInt(scoreCards[0].textContent);
+  const awayPoints = parseInt(scoreCards[1].textContent);
+
+  if (homePoints > awayPoints) {
+    scoreCards[0].style.color = "#ffd100";
+    scoreCards[0].style.border = "4px solid #ffd100"
+
+    scoreCards[1].style.color = "#333333";
+    scoreCards[1].style.border = "4px solid #333333";
+  } else if (homePoints < awayPoints) {
+    scoreCards[1].style.color = "#ffd100";
+    scoreCards[1].style.border = "4px solid #ffd100"
+
+    scoreCards[0].style.color = "#333333";
+    scoreCards[0].style.border = "4px solid #333333";
+  } else {
+    scoreCards[0].style.color = "#333333";
+    scoreCards[0].style.border = "4px solid #333333";
+
+    scoreCards[1].style.color = "#333333";
+    scoreCards[1].style.border = "4px solid #333333";
+  }
 }
 
 function updateItems(eventType) {

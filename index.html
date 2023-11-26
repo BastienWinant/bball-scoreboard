@@ -2,21 +2,23 @@
 <html>
 	<head>
 		<title>Scoreboard</title>
-
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="css/styles.css">
 	</head>
 	<body class="no-margin">
 		<section class="scoreboard-container">
-			<header class="scoreboard-header centered-content black-border">
+			<header class="scoreboard-header centered-content">
 				<h1 class="scoreboard-title no-margin">scoreboard</h1>
 			</header>
-			<main class="bbox black-border">
-				<section class="team-section black-border">
+			<main class="bbox">
+				<section class="team-section">
 					<header class="team-header centered-content">
 						<h2 class="team-title no-margin">home</h2>
 					</header>
-					<div class="pts-container black-border">
-						<div class="pts-btns black-border">
+					<div class="pts-container">
+						<div class="pts-btns">
 							<button class="btn pts-btn" onclick="addPoints(0, 1)">+1</button>
 							<button class="btn pts-btn" onclick="addPoints(0, 2)">+2</button>
 							<button class="btn pts-btn" onclick="addPoints(0, 3)">+3</button>
@@ -52,12 +54,12 @@
 						<button class="btn gameplay-btn timeout-btn" onclick="removeTimeOut(0)">timeout</button>
 					</section> <!-- timeouts section-->
 				</section> <!-- team display -->
-				<section class="team-section black-border">
+				<section class="team-section">
 					<header class="team-header centered-content">
 						<h2 class="team-title no-margin">away</h2>
 					</header>
-					<div class="pts-container pts-container-right black-border">
-						<div class="pts-btns pts-btns-right black-border">
+					<div class="pts-container pts-container-right">
+						<div class="pts-btns pts-btns-right">
 							<button class="btn pts-btn" onclick="addPoints(1, 1)">+1</button>
 							<button class="btn pts-btn" onclick="addPoints(1, 2)">+2</button>
 							<button class="btn pts-btn" onclick="addPoints(1, 3)">+3</button>
